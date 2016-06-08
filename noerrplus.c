@@ -3,8 +3,6 @@
 
 void plus(char sum[],char a1[],char a2[]);
 void rev(char p[], int a);
-void change(char p[]);
-void rechange(char p[]);
 int main(void)
 {
 	char a[10][100]={0};
@@ -22,19 +20,11 @@ int main(void)
 return 0;
 }
 
-void change(char p[])
-{  
-   int a;
-   for(a=0;a<strlen(p);a++)
-   p[a]-='0';
-
-   } 
-
 void plus(char sum[],char a1[],char a2[]) 
 { 
    int carry=0;
    int i,size;
-   
+   char a3;
    if(strlen(a1)>strlen(a2)) {
 	   size=strlen(a2);
 		strcpy(sum, a1);
@@ -48,7 +38,9 @@ void plus(char sum[],char a1[],char a2[])
    { sum[i]=(a1[i]-'0'+a2[i]-'0'+carry)%10+'0';
 		 carry=(a1[i]-'0'+a2[i]-'0'+carry)/10;
    }
-if(sum[size-1]=='0') sum[size]='1'
+a3=a1[size-1]-'0'+a2[size-1]-'0';
+if(a3==10) sum[size]+='1';
+if(sum[size]=='b') sum[size]='2';
  }
 
 void rev(char a[],int size)
@@ -65,9 +57,3 @@ void rev(char a[],int size)
 
 }
 
-void rechange(char p[])
-{ 
-	int a;
-	for(a=0;strlen((p));a++)
-		p[a]+='0';
-}
